@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Collection>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="nav-item">
+                Welcome to the homepage!
+            </h2>
+        </div>
+        <p>
+            There is nothing here yet :(
+        </p>
+    </div>
+    <br /><br />
+    <br /><br />
+
+@*<table class="table table-hover table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Collection name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Theme
+            </th>
+            <th>
+                Details
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td>
+                    @obj.Name
+                </td>
+                <td>
+                    @obj.Description
+                </td>
+                <td>
+                    @obj.Theme
+                </td>
+                <td width="10%">
+                    <div class="w-100 btn-group" role="group">
+                        <a asp-controller="Item" asp-action="Index" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
+                            <i class="bi bi-list-ul"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+          }
+    </tbody>
+</table>
+</div>*@

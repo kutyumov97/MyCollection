@@ -1,0 +1,242 @@
+﻿@model IEnumerable<Item>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="nav-item">
+                List of item
+            </h2>
+        </div>
+        @if (GlobalVariables.ActualUserId == GlobalVariables.SelectedCollectionAutorId || User.IsInRole("admin"))
+        {
+            <div class="col-6 text-end">
+                <a asp-controller="Item" asp-action="Create" class="btn btn-primary" style="width:200px">
+                    <i class="bi bi-plus-circle"></i>&nbsp; 
+                    Create item
+                </a>
+            </div>
+            <div class="col-12 text-end">
+                <a asp-controller="Collection" asp-action="Index" asp-route-id="@GlobalVariables.SelectedUserId" class="btn btn-primary" style="width:200px">
+                    <i class="bi bi-reply"></i>&nbsp;
+                    Back to my collection list 
+                </a>
+            </div>
+            }
+        @if (!User.IsInRole("admin") && (!User.Identity.IsAuthenticated || GlobalVariables.ActualUserId != GlobalVariables.SelectedCollectionAutorId))
+        {
+            <div class="col-12 text-end">
+                <a asp-controller="Collection" asp-action="AllCollections" class="btn btn-primary" style="width:200px">
+                    <i class="bi bi-reply"></i>&nbsp;
+                    Back to collection list 
+                </a>
+            </div>
+        }
+    </div>
+    <br />
+    <form method="get" class="d-flex" style="width:50%">
+        <label class="control-label">
+            Name:&nbsp;&nbsp;
+        </label>
+        <input name="name" class="form-control" />
+        <label class="control-label">
+            &nbsp;&nbsp;&nbsp;Tag:&nbsp;&nbsp;
+        </label>
+        <input name="tag" class="form-control" />
+        <input type="submit" value="Filter" class="btn btn-primary mx-2" />
+    </form>
+    <br />
+
+<table class="table table-hover table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                <a asp-controller="Item" asp-action="Index" asp-route-sortOrder="@ViewBag.NameSort">
+                    Item name
+                </a> 
+            </th>
+            <th>
+                <a asp-controller="Item" asp-action="Index" asp-route-sortOrder="@ViewBag.TagSort">
+                    Tag
+                </a>
+            </th>
+            @if (GlobalVariables.FieldName1 != null && GlobalVariables.TypeField1 != null)
+            {
+                <th>
+                    @GlobalVariables.FieldName1
+                </th>
+            }
+            @if (GlobalVariables.FieldName2 != null && GlobalVariables.TypeField2 != null)
+            {
+                <th>
+                    @GlobalVariables.FieldName2
+                </th>
+            }
+            @if (GlobalVariables.FieldName3 != null && GlobalVariables.TypeField3 != null)
+            {
+                <th>
+                    @GlobalVariables.FieldName3
+                </th>
+            }
+            <th width="50" class="text-center">
+                Details
+            </th>
+            <th width="50" class="text-center">
+                Edit
+            </th>
+            <th width="50" class="text-center">
+                Delete
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td>
+                    @obj.Name
+                </td>
+                <td>
+                    @obj.Tags
+                </td>
+                @if (GlobalVariables.FieldName1 != null && GlobalVariables.TypeField1 != null)
+                {
+                    switch (GlobalVariables.TypeField1)
+                    {
+                        case FieldType.Numeric:
+                            <td>
+                                @obj.AddInt1
+                            </td>
+                            break;
+                        case FieldType.String:
+                            <td>
+                                @obj.AddString1
+                            </td>
+                            break;
+                        case FieldType.Text:
+                            <td>
+                                @obj.AddText1
+                            </td>    
+                            break;
+                        case FieldType.Date:
+                            <td>
+                                @obj.AddTime1
+                            </td>
+                            break;
+                        case FieldType.TrueFalse:
+                            <td>
+                                @obj.AddBool1
+                            </td>
+                            break;
+                    }
+                }
+                @if (GlobalVariables.FieldName2 != null && GlobalVariables.TypeField2 != null)
+                {
+                    switch (GlobalVariables.TypeField2)
+                    {
+                        case FieldType.Numeric:
+                            <td>
+                                @obj.AddInt2
+                            </td>
+                            break;
+                        case FieldType.String:
+                            <td>
+                                @obj.AddString2
+                            </td>
+                            break;
+                        case FieldType.Text:
+                            <td>
+                                @obj.AddText2
+                            </td>    
+                            break;
+                        case FieldType.Date:
+                            <td>
+                                @obj.AddTime2
+                            </td>
+                            break;
+                        case FieldType.TrueFalse:
+                            <td>
+                                @obj.AddBool2
+                            </td>
+                            break;
+                    }
+                }
+                @if (GlobalVariables.FieldName3 != null && GlobalVariables.TypeField3 != null)
+                {
+                    switch (GlobalVariables.TypeField3)
+                    {
+                        case FieldType.Numeric:
+                            <td>
+                                @obj.AddInt3
+                            </td>
+                            break;
+                        case FieldType.String:
+                            <td>
+                                @obj.AddString3
+                            </td>
+                            break;
+                        case FieldType.Text:
+                            <td>
+                                @obj.AddText3
+                            </td>    
+                            break;
+                        case FieldType.Date:
+                            <td>
+                                @obj.AddTime3
+                            </td>
+                            break;
+                        case FieldType.TrueFalse:
+                            <td>
+                                @obj.AddBool3
+                            </td>
+                            break;
+                    }
+                }
+                <td align="left">
+                    <div class="w-100 btn-group" role="group">
+                        <a asp-controller="Item" asp-action="Details" asp-route-id=@obj.Id class="btn btn-primary mx-2">
+                            <i class="bi bi-list-ul"></i>
+                        </a>
+                    </div>
+                </td>
+                @if (GlobalVariables.SelectedUserId == obj.AppUserId || User.IsInRole("admin"))
+                {
+                    <td align="left">
+                        <div class="w-100 btn-group" role="group">
+                            <a asp-controller="Item" asp-action="Edit" asp-route-id=@obj.Id class="btn btn-primary mx-2">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                        </div>
+                    </td>
+                    <td align="left">
+                        <div class="w-100 btn-group" role="group">
+                            <a asp-controller="Item" asp-action="Del" asp-route-id=@obj.Id class="btn btn-danger mx-2">
+                                <i class="bi bi-trash3"></i>
+                            </a>
+                        </div>
+                    </td>
+                }
+                else 
+                {
+                    <td align="left">
+                        <div class="w-100 btn-group" role="group">
+                            <a class="btn btn-secondary mx-2">
+                                <i class="bi bi-lock"></i>
+                            </a>
+                        </div>
+                    </td>
+                    <td align="left">
+                        <div class="w-100 btn-group" role="group">
+                            <a class="btn btn-secondary mx-2">
+                                <i class="bi bi-lock"></i>
+                            </a>
+                        </div>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

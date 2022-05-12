@@ -1,0 +1,49 @@
+﻿@model EditCollectionViewModel
+
+<form method="post" asp-action="Edit">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">
+                Do you want to update this collection?
+            </h2>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name">
+                Name:&nbsp;&nbsp;
+            </label>
+            <input asp-for="Name" class="form-control" style="width: 400px; height: 30px;" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description">
+                Description:&nbsp;&nbsp;
+            </label>
+            <input asp-for="Description" class="form-control" style="width: 400px; height: 30px;" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>      
+        <br />
+        <div class="pb-3">
+            <div>
+                <label asp-for="Theme">
+                    Collection theme:&nbsp;&nbsp;
+                </label>
+                <select asp-for="Theme" asp-items="Html.GetEnumSelectList<CollectionTheme>()"></select>
+            </div>
+        </div>      
+        <br />
+        <button type="submit" class="btn btn-primary" style="width:120px">
+            <i class="bi bi-pencil-square"></i>&nbsp;
+            Update
+        </button>
+        <a asp-controller="Collection" asp-action="Index" asp-route-id="@GlobalVariables.SelectedUserId" class="btn btn-secondary" style="width:120px">
+            <i class="bi bi-reply"></i>&nbsp;
+            Cancel
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+@{
+    <partial name="_ValidationScriptsPartial" />
+}
+}

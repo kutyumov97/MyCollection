@@ -1,0 +1,154 @@
+﻿@model Item
+
+<form method="post" asp-action="Edit">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="nav-item">
+                Do you want to update this item?
+            </h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" style="width: 400px; height: 30px;" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Tags"></label>
+            <input asp-for="Tags" class="form-control" style="width: 400px; height: 30px;" />
+        </div>
+        @if (GlobalVariables.FieldName1 != null && GlobalVariables.TypeField1 != null)
+        {
+            switch (GlobalVariables.TypeField1)
+                {
+                    case FieldType.Numeric:
+                        <div class="mb-3">
+                            <label asp-for="AddInt1">@GlobalVariables.FieldName1</label>
+                            <input asp-for="AddInt1" type="number" class="form-control" style="width: 400px; height: 30px;" />
+                        </div>
+                        break;
+                    case FieldType.String:
+                        <div class="mb-3">
+                            <label asp-for="AddString1">@GlobalVariables.FieldName1</label>
+                            <input asp-for="AddString1" class="form-control" style="width: 400px; height: 30px;" />
+                        </div>
+                        break;
+                    case FieldType.Text:
+                        <div class="mb-3">
+                            <label asp-for="AddText1">@GlobalVariables.FieldName1</label>
+                            <input asp-for="AddText1" class="form-control" style="width: 400px; height: 120px;" />
+                        </div>
+                        break;
+                    case FieldType.Date:
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label asp-for="AddTime1" class="control-label">@GlobalVariables.FieldName1</label>
+                                <input asp-for="AddTime1" class="form-control" style="width: 400px; height: 30px;" />
+                                <span asp-validation-for="AddTime1" class="text-danger"></span>
+                            </div>
+                        </div>
+                        break;
+                    case FieldType.TrueFalse:
+                        <div class="mb-3">
+                            <span>@GlobalVariables.FieldName1</span>
+                            <input checked="checked" name="AddBool1" type="checkbox" value="true" />
+                            <input name="AddBool1" type="hidden" value="false" style="width: 400px; height: 30px;" />
+                        </div>
+                        break;
+                }
+        }
+        @if (GlobalVariables.FieldName2 != null && GlobalVariables.TypeField2 != null)
+        {
+            switch (GlobalVariables.TypeField2)
+                {
+                    case FieldType.Numeric:
+                        <div class="mb-3">
+                            <label asp-for="AddInt2">@GlobalVariables.FieldName2</label>
+                            <input asp-for="AddInt2" type="number" class="form-control" style="width: 400px; height: 30px;" />
+                        </div>
+                        break;
+                    case FieldType.String:
+                        <div class="mb-3">
+                            <label asp-for="AddString2">@GlobalVariables.FieldName2</label>
+                            <input asp-for="AddString2" class="form-control" style="width: 400px; height: 30px;" />
+                        </div>
+                        break;
+                    case FieldType.Text:
+                        <div class="mb-3">
+                            <label asp-for="AddText2">@GlobalVariables.FieldName2</label>
+                            <input asp-for="AddText2" class="form-control" style="width: 400px; height: 120px;" />
+                        </div>
+                        break;
+                    case FieldType.Date:
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label asp-for="AddTime2" class="control-label">@GlobalVariables.FieldName2</label>
+                                <input asp-for="AddTime2" class="form-control" style="width: 400px; height: 30px;" />
+                                <span asp-validation-for="AddTime2" class="text-danger"></span>
+                            </div>
+                        </div>
+                        break;
+                    case FieldType.TrueFalse:
+                        <div class="mb-3">
+                            <span>@GlobalVariables.FieldName2</span>
+                            <input checked="checked" name="AddBool2" type="checkbox" value="true" />
+                            <input name="AddBool2" type="hidden" value="false" style="width: 400px; height: 30px;" />
+                        </div>
+                        break;
+                }
+        }
+        @if (GlobalVariables.FieldName3 != null && GlobalVariables.TypeField3 != null)
+        {
+            switch (GlobalVariables.TypeField3)
+                {
+                    case FieldType.Numeric:
+                        <div class="mb-3">
+                            <label asp-for="AddInt3">@GlobalVariables.FieldName3</label>
+                            <input asp-for="AddInt3" type="number" class="form-control" style="width: 400px; height: 30px;" />
+                        </div>
+                        break;
+                    case FieldType.String:
+                        <div class="mb-3">
+                            <label asp-for="AddString3">@GlobalVariables.FieldName3</label>
+                            <input asp-for="AddString3" class="form-control" style="width: 400px; height: 30px;" />
+                        </div>
+                        break;
+                    case FieldType.Text:
+                        <div class="mb-3">
+                            <label asp-for="AddText3">@GlobalVariables.FieldName3</label>
+                            <input asp-for="AddText3" class="form-control" style="width: 400px; height: 120px;" />
+                        </div>
+                        break;
+                    case FieldType.Date:
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label asp-for="AddTime3" class="control-label">@GlobalVariables.FieldName3</label>
+                                <input asp-for="AddTime3" class="form-control" style="width: 400px; height: 30px;" />
+                                <span asp-validation-for="AddTime3" class="text-danger"></span>
+                            </div>
+                        </div>
+                        break;
+                    case FieldType.TrueFalse:
+                        <div class="mb-3">
+                            <span>@GlobalVariables.FieldName3</span>
+                            <input checked="checked" name="AddBool3" type="checkbox" value="true" />
+                            <input name="AddBool3" type="hidden" value="false" style="width: 400px; height: 30px;" />
+                        </div>
+                        break;
+                }
+        }
+        <button type="submit" class="btn btn-primary" style="width:120px">
+            <i class="bi bi-pencil-square"></i>&nbsp;
+            Update
+        </button>
+        <a asp-controller="Item" asp-action="Index" asp-route-id="@GlobalVariables.CollectionId" class="btn btn-secondary" style="width:120px">
+            <i class="bi bi-reply"></i>&nbsp;
+            Cansel
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+@{
+    <partial name="_ValidationScriptsPartial" />
+}
+}

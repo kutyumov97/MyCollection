@@ -1,0 +1,20 @@
+﻿@model Item
+
+<form method="post" asp-action="Del">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="nav-item">
+                Do you want to delete this item?
+            </h2>           
+        </div>
+        <button type="submit" class="btn btn-danger style="width:120px">
+            <i class="bi bi-trash"></i>&nbsp;
+            Delete
+        </button>
+        <a asp-controller="Item" asp-action="Index" asp-route-id="@GlobalVariables.CollectionId" class="btn btn-secondary" style="width:120px">
+            <i class="bi bi-reply"></i>&nbsp;
+            Cancel
+        </a>
+    </div>
+</form>
+
